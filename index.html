@@ -293,23 +293,411 @@ footer{border-top:1px solid var(--line);padding:2.2rem 0;position:relative;z-ind
 .rv{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1)}
 .rv.in{opacity:1;transform:none}
 
-@media(max-width:900px){
-  .about-grid{grid-template-columns:1fr}
-  .about-aside{position:static}
-  .cols{grid-template-columns:1fr;gap:2.5rem}
-  .proj{grid-template-columns:2.5rem 1fr;gap:1rem}
-  .proj .meta{grid-column:2;font-size:.6rem}
-  .cv-list{grid-template-columns:1fr}
-  .grid-bg{background-size:calc(100% / 4) 100%}
-}
-@media(max-width:760px){
-  .burger{display:flex}
-  .menu{
-    position:fixed;inset:0;background:var(--bg);
-    flex-direction:column;justify-content:center;align-items:flex-start;
-    padding:0 var(--pad);gap:1.6rem;
-    transform:translateY(-100%);transition:transform .6s cubic-bezier(.7,0,.2,1);
+/* =========================================================
+   RESPONSIVE — TABLET + MOBILE
+   Il layout desktop rimane invariato
+   ========================================================= */
+
+@media (max-width: 900px){
+
+  /* ABOUT */
+  .about-grid{
+    grid-template-columns:1fr;
+    gap:2.5rem;
   }
+
+  .about-aside{
+    position:static;
+  }
+
+  /* COMPETENCES */
+  .cols{
+    grid-template-columns:1fr;
+    gap:3rem;
+  }
+
+  /* PROJECTS */
+  .proj{
+    grid-template-columns:2.5rem minmax(0,1fr);
+    gap:1rem;
+  }
+
+  .proj .meta{
+    grid-column:2;
+    white-space:normal;
+    font-size:.6rem;
+  }
+
+  /* CV */
+  .cv-list{
+    grid-template-columns:1fr;
+  }
+
+  /* HERO GRID */
+  .grid-bg{
+    background-size:calc(100% / 4) 100%;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 760px){
+
+  /* ---------- GLOBAL ---------- */
+
+  :root{
+    --pad:1.35rem;
+  }
+
+  section{
+    padding:5rem 0;
+  }
+
+  .wrap{
+    width:100%;
+  }
+
+
+  /* ---------- HEADER ---------- */
+
+  .nav{
+    padding:1rem var(--pad);
+    gap:1rem;
+  }
+
+  header.scrolled .nav{
+    padding:.8rem var(--pad);
+  }
+
+  .logo img{
+    max-width:46px;
+    height:auto;
+  }
+
+  .nav-right{
+    gap:.7rem;
+  }
+
+  .nav-right .social{
+    display:none;
+  }
+
+  .toggle{
+    width:32px;
+    height:32px;
+    flex-shrink:0;
+  }
+
+  .burger{
+    display:flex;
+    flex-shrink:0;
+  }
+
+
+  /* ---------- MOBILE MENU ---------- */
+
+  .menu{
+    position:fixed;
+    inset:0;
+    width:100%;
+    height:100svh;
+
+    background:var(--bg);
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:flex-start;
+
+    padding:0 var(--pad);
+    gap:1.5rem;
+
+    transform:translateY(-100%);
+    transition:transform .6s cubic-bezier(.7,0,.2,1);
+
+    z-index:1;
+  }
+
+  .menu.open{
+    transform:translateY(0);
+  }
+
+  .menu a{
+    font-family:var(--serif);
+    font-size:clamp(2rem,9vw,3rem);
+    letter-spacing:-.02em;
+    text-transform:none;
+    color:var(--ink);
+    padding:.1rem 0;
+  }
+
+  .nav-right{
+    position:relative;
+    z-index:3;
+  }
+
+
+  /* ---------- HERO ---------- */
+
+  .hero{
+    min-height:100svh;
+    padding-top:7rem;
+    padding-bottom:4.5rem;
+    justify-content:center;
+  }
+
+  .hero-top{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:.55rem;
+    margin-bottom:2rem;
+  }
+
+  .hero-top .label{
+    font-size:.58rem;
+    letter-spacing:.17em;
+  }
+
+  .hero h1{
+    font-size:clamp(3.4rem,18vw,6.5rem);
+    line-height:.88;
+    letter-spacing:-.045em;
+    max-width:100%;
+  }
+
+  .hero-sub{
+    margin-top:2.2rem;
+    padding-top:1.2rem;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:1.2rem;
+  }
+
+  .hero-sub .tag{
+    font-size:.78rem;
+  }
+
+  .hero-sub p{
+    max-width:38ch;
+    font-size:.88rem;
+    line-height:1.6;
+  }
+
+  .scroll-hint{
+    left:var(--pad);
+    bottom:1.5rem;
+  }
+
+
+  /* ---------- SECTION HEADINGS ---------- */
+
+  .sec-head{
+    gap:.75rem;
+    margin-bottom:2.5rem;
+    padding-bottom:.9rem;
+  }
+
+  .sec-head .num{
+    font-size:.6rem;
+    flex-shrink:0;
+  }
+
+  .sec-head h2{
+    font-size:clamp(1.7rem,8vw,2.5rem);
+    line-height:1;
+  }
+
+
+  /* ---------- ABOUT ---------- */
+
+  .about-grid{
+    gap:2rem;
+  }
+
+  .about-aside .label{
+    margin-top:0;
+    font-size:.58rem;
+    line-height:1.7;
+    letter-spacing:.16em;
+  }
+
+  .about-text p{
+    font-size:.94rem;
+    line-height:1.7;
+    margin-bottom:1.5rem;
+  }
+
+  .about-text p:first-child{
+    font-size:1.25rem;
+    line-height:1.45;
+  }
+
+
+  /* ---------- SKILLS ---------- */
+
+  .skill-intro{
+    font-size:clamp(1.45rem,7vw,2rem);
+    line-height:1.25;
+    margin-bottom:2.8rem;
+  }
+
+  .cols{
+    gap:2.8rem;
+  }
+
+  .col h3{
+    font-size:.6rem;
+    margin-bottom:1.2rem;
+  }
+
+  .col h4{
+    font-size:.66rem;
+    margin-top:1.5rem;
+  }
+
+  .col li{
+    font-size:.88rem;
+    line-height:1.5;
+    padding:.65rem 0;
+    gap:.5rem;
+  }
+
+  /* Disattiva il piccolo spostamento hover su touch */
+  .col li:hover{
+    padding-left:0;
+  }
+
+
+  /* ---------- PROJECTS ---------- */
+
+  .projects{
+    width:100%;
+  }
+
+  .proj{
+    grid-template-columns:2.2rem minmax(0,1fr);
+    gap:.8rem;
+
+    padding:1.35rem 0;
+    align-items:start;
+  }
+
+  .proj .idx{
+    font-size:.6rem;
+    padding-top:.25rem;
+  }
+
+  .proj h3{
+    font-size:clamp(1.25rem,6vw,1.7rem);
+    line-height:1.15;
+  }
+
+  .proj .meta{
+    grid-column:2;
+    font-size:.57rem;
+    letter-spacing:.1em;
+    white-space:normal;
+    line-height:1.5;
+    margin-top:.25rem;
+  }
+
+  .proj .arrow{
+    opacity:1;
+    margin-left:.3rem;
+  }
+
+  /* Evita il movimento laterale su mobile */
+  .proj:hover{
+    padding-left:0;
+  }
+
+
+  /* ---------- PHILOSOPHY BAND ---------- */
+
+  .band{
+    padding:4.5rem 0;
+  }
+
+  .band blockquote{
+    max-width:19ch;
+    font-size:clamp(1.5rem,7vw,2.2rem);
+    line-height:1.25;
+  }
+
+  .band .label{
+    margin-bottom:1.4rem;
+  }
+
+
+  /* ---------- CONTACT ---------- */
+
+  .contact{
+    padding-bottom:3.5rem;
+  }
+
+  .mailto{
+    display:block;
+    width:100%;
+    font-size:clamp(1.35rem,7vw,2.5rem);
+    line-height:1.2;
+    overflow-wrap:anywhere;
+    word-break:break-word;
+  }
+
+  .cv-list{
+    margin-top:3rem;
+    grid-template-columns:1fr;
+  }
+
+  .cv-list a{
+    padding:1.3rem 1rem;
+    min-height:76px;
+  }
+
+  .cv-list .t{
+    font-size:.88rem;
+  }
+
+  .cv-list .s{
+    font-size:.55rem;
+    line-height:1.5;
+  }
+
+  .contact-social{
+    margin-top:2.5rem;
+    gap:.7rem;
+  }
+
+  .contact-social a{
+    padding:.8rem 1.1rem;
+    font-size:.62rem;
+  }
+
+
+  /* ---------- FOOTER ---------- */
+
+  footer{
+    padding:1.8rem 0;
+  }
+
+  .foot{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:.7rem;
+  }
+
+  .foot .social{
+    margin-left:0;
+    width:100%;
+    justify-content:flex-start;
+  }
+
+}
   .menu.open{transform:none}
   .menu a{font-family:var(--serif);font-size:2rem;letter-spacing:-.02em;text-transform:none;color:var(--ink)}
   .nav-right{z-index:2}
